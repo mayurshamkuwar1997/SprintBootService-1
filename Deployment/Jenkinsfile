@@ -29,7 +29,7 @@ pipeline{
       }
     }
     
-    stage(pushing-dockerImage-in-docker-registry) {
+    stage('pushing-dockerImage-in-docker-registry') {
       agent {
         label 'built-in'
       }
