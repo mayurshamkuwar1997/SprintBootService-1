@@ -21,6 +21,3 @@ spec:
        image: mayurshamkuwar1997/myjdk:latest
        ports:
         - containerPort: 8080
-
-    nodeSelector:
-     env: qa
