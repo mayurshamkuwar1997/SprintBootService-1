@@ -53,7 +53,9 @@ pipeline{
           sh '''
           sudo kubectl apply -f deployment.yaml
           sudo kubectl apply -f service.yaml
+          sleep 20
           sudo kubectl get pods
+          sleep 20
           sudo kubectl get svc
           '''
         }
