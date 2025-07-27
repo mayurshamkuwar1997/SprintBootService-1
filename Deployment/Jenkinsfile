@@ -1,0 +1,63 @@
+pipeline{
+  agent none
+  options{
+    skipDefaultCheckout()
+  }
+ 
+  stages {
+    
+    stage('clonning-git-repo') {
+      agent {
+        label 'built-in'
+      }
+      steps {
+        dir (/mnt/kubernates) {
+          checkout scm
+        }
+      }
+    }
+
+    stage('building-docker-image') {
+      agent {
+        label 'built-in'
+      }
+      steps{
+        dir('/mnt/kubernates') {
+          sh 'sudo cp -r /mnt/jars/*.jar .'
+          sh 'sudo docker build -t mayurshamkuwar1997/myjdk:latest'
+        }
+      }
+    }
+    
+    stage(pushing-dockerImage-in-docker-registry) {
+      agent {
+        label 'built-in'
+      }
+      steps{
+        dir('/mnt/kubernates') {
+          sh '''
+          sudo docker login -u mayurshamkuwar1997 -p Mayur1997$
+          sudo docker push mayurshamkuwar1997/myjdk:latest
+          sudo docker logout
+          '''
+        }
+      }
+    }
+
+    stage('deploying-pods') {
+      agent {
+        label 'built-in'
+      }
+      steps{
+        dir('/mnt/kubernates') {
+          sh '''
+          sudo kubectl apply -f deployment.yaml
+          sudo kubectl apply -f service.yaml
+          sudo kubectl get pods
+          sudo kubectl get svc
+          '''
+        }
+      }
+    }
+  }
+}
