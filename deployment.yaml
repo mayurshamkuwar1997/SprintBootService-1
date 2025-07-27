@@ -1,0 +1,26 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+ name: veldeploy
+
+spec:
+ replicas: 2
+ selector:
+   matchLabels:
+     env: qa
+
+ template:
+   metadata:
+    name: velpod
+    labels:
+     env: qa
+
+   spec:
+    containers:
+     - name: c1
+       image: mayurshamkuwar1997/myjdk:latest
+       ports:
+        - containerPort: 8080
+
+    nodeSelector:
+     env: qa
