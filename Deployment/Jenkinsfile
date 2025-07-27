@@ -24,7 +24,7 @@ pipeline{
       steps{
         dir('/mnt/kubernates') {
           sh 'sudo cp -r /mnt/jars/*.jar .'
-          sh 'sudo docker build -t mayurshamkuwar1997/myjdk:latest'
+          sh 'sudo docker build -t mayurshamkuwar1997/myjdk:latest .'
         }
       }
     }
