@@ -28,9 +28,10 @@ pipeline{
       label 'built-in'
     }
     steps{
-      dir('/mnt/project')
+      dir('/mnt/project') {
        sh 'sudo rm -rf /root/.m2/repository'
-       sh 'mvn clean install'      
+       sh 'mvn clean install'  
+      }
     }
   }
     
