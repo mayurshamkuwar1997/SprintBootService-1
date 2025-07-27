@@ -1,0 +1,14 @@
+kind: Service
+apiVersion: v1
+metadata:
+ name: velservice
+
+spec:
+ selector:
+  env: qa
+
+ ports:
+  - port: 8080
+    tagetPort: 8080
+
+ type: NodePort
