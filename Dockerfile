@@ -1,6 +1,5 @@
 FROM openjdk:17
-MAINTAINER mayur
 WORKDIR /app
-COPY *.jar /app
+COPY *.jar /app/
 EXPOSE 8080
-ENTRYPOINT ["sh" "-c" "java -jar /app/*.jar"]
+ENTRYPOINT ["java", "-jar", "/app/demo-0.0.1-SNAPSHOT.jar"]
