@@ -12,6 +12,7 @@ pipeline{
       }
       steps {
         dir ('/mnt/kubernates') {
+          sh 'sudo rm -rf *'
           checkout scm
         }
       }
