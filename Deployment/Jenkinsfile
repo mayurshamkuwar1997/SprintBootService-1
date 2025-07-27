@@ -11,7 +11,7 @@ pipeline{
         label 'built-in'
       }
       steps {
-        dir (/mnt/kubernates) {
+        dir ('/mnt/kubernates') {
           checkout scm
         }
       }
