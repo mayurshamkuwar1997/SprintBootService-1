@@ -25,7 +25,7 @@ pipeline{
       steps{
         dir('/mnt/kubernates') {
           sh 'sudo cp -r /mnt/jars/*.jar .'
-          sh 'sudo docker build -t mayurshamkuwar1997/myjdk:latest .'
+          sh 'sudo docker build -t mayurshamkuwar1997/myjdk:1 .'
         }
       }
     }
@@ -38,7 +38,7 @@ pipeline{
         dir('/mnt/kubernates') {
           sh '''
           sudo docker login -u mayurshamkuwar1997 -p Mayur1997$
-          sudo docker push mayurshamkuwar1997/myjdk:latest
+          sudo docker push mayurshamkuwar1997/myjdk:1
           sudo docker logout
           '''
         }
